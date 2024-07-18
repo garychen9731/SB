@@ -1,0 +1,2320 @@
+	
+log	
+level	"debug"
+timestamp	true
+experimental	
+clash_api	
+external_controller	"127.0.0.1:9090"
+external_ui	"ui"
+secret	""
+external_ui_download_url	"https://mirror.ghproxy.com/https://github.com/MetaCubeX/Yacd-meta/archive/gh-pages.zip"
+external_ui_download_detour	"direct"
+default_mode	"rule"
+cache_file	
+enabled	true
+store_fakeip	false
+dns	
+servers	
+0	
+tag	"proxyDns"
+address	"tls://8.8.8.8"
+detour	"proxy"
+1	
+tag	"localDns"
+address	"https://223.5.5.5/dns-query"
+detour	"direct"
+2	
+tag	"block"
+address	"rcode://success"
+rules	
+0	
+domain	
+0	"ghproxy.com"
+1	"cdn.jsdelivr.net"
+2	"testingcf.jsdelivr.net"
+server	"localDns"
+1	
+rule_set	"geosite-category-ads-all"
+server	"block"
+2	
+outbound	"any"
+server	"localDns"
+disable_cache	true
+3	
+rule_set	"geosite-cn"
+server	"localDns"
+4	
+clash_mode	"direct"
+server	"localDns"
+5	
+clash_mode	"global"
+server	"proxyDns"
+6	
+rule_set	"geosite-geolocation-!cn"
+server	"proxyDns"
+final	"localDns"
+strategy	"ipv4_only"
+inbounds	
+0	
+type	"tun"
+inet4_address	"172.19.0.1/30"
+mtu	9000
+auto_route	true
+strict_route	true
+sniff	true
+endpoint_independent_nat	false
+stack	"system"
+platform	
+http_proxy	
+enabled	true
+server	"127.0.0.1"
+server_port	2080
+1	
+type	"mixed"
+listen	"127.0.0.1"
+listen_port	2080
+sniff	true
+users	[]
+outbounds	
+0	
+tag	"proxy"
+type	"selector"
+outbounds	
+0	"auto"
+1	"direct"
+2	"CF-CDN"
+3	"CF-CDN 2"
+4	"CF-CDN 3"
+5	"CF-CDN 4"
+6	"CF-CDN 5"
+7	"CF-CDN 6"
+8	"CF-CDN 7"
+9	"CF-CDN 8"
+10	"CF-CDN 9"
+11	"CF-CDN 10"
+12	"CF-CDN 11"
+13	"CF-CDN 12"
+14	"CF-CDN 13"
+15	"CF-CDN 14"
+16	"CF-CDN 15"
+17	"CF-CDN 16"
+18	"CF-CDN 17"
+19	"CF-CDN 18"
+20	"CF-CDN 19"
+21	"CF-CDN 20"
+22	"CF-CDN 21"
+23	"CF-CDN 22"
+24	"CF-CDN 23"
+25	"CF-CDN 24"
+26	"CF-CDN 25"
+27	"CF-CDN 26"
+28	"CF-CDN 27"
+29	"CF-CDN 28"
+30	"CF-CDN 29"
+31	"CF-CDN 30"
+32	"CF-CDN 31"
+33	"CF-CDN 32"
+34	"CF-CDN 33"
+35	"CF-CDN 34"
+36	"CF-CDN 35"
+37	"CF-CDN 36"
+38	"CF-CDN 37"
+39	"CF-CDN 38"
+40	"CF-CDN 39"
+41	"CF-CDN 40"
+42	"CF-CDN 41"
+43	"CF-CDN 42"
+44	"CF-CDN 43"
+45	"CF-CDN 44"
+46	"CF-CDN 45"
+47	"CF-CDN 46"
+48	"CF-CDN 47"
+49	"CF-CDN 48"
+50	"CF-CDN 49"
+51	"CF-CDN 50"
+52	"CF-CDN 51"
+53	"CF-CDN 52"
+54	"CF-CDN 53"
+55	"CF-CDN 54"
+56	"CF-CDN 55"
+57	"CF-CDN 56"
+58	"CF-CDN 57"
+59	"CF-CDN 58"
+60	"CF-CDN 59"
+61	"CF-CDN 60"
+62	"CF-CDN 61"
+63	"CF-CDN 62"
+64	"CF-CDN 63"
+65	"CF-CDN 64"
+66	"CF-CDN 65"
+67	"CF-CDN 66"
+68	"CF-CDN 67"
+69	"CF-CDN 68"
+70	"CF-CDN 69"
+71	"CF-CDN 70"
+72	"CF-CDN 71"
+73	"CF-CDN 72"
+74	"CF-CDN 73"
+75	"CF-CDN 74"
+76	"CF-CDN 75"
+77	"CF-CDN 76"
+78	"CF-CDN 77"
+79	"CF-CDN 78"
+80	"CF-CDN 79"
+81	"CF-CDN 80"
+82	"CF-CDN 81"
+83	"CF-CDN 82"
+84	"CF-CDN 83"
+85	"CF-CDN 84"
+86	"CF-CDN 85"
+87	"CF-CDN 86"
+88	"CF-CDN 87"
+89	"CF-CDN 88"
+90	"CF-CDN 89"
+91	"CF-CDN 90"
+92	"CF-CDN 91"
+93	"CF-CDN 92"
+94	"CF-CDN 93"
+95	"CF-CDN 94"
+96	"CF-CDN 95"
+97	"CF-CDN 96"
+98	"CF-CDN 97"
+99	"CF-CDN 98"
+100	"CF-CDN 99"
+101	"CF-CDN 100"
+1	
+tag	"OpenAI"
+type	"selector"
+outbounds	
+0	"TaiWan"
+1	"Singapore"
+2	"Japan"
+3	"America"
+4	"Others"
+default	"America"
+2	
+tag	"Google"
+type	"selector"
+outbounds	
+0	"HongKong"
+1	"TaiWan"
+2	"Singapore"
+3	"Japan"
+4	"America"
+5	"Others"
+3	
+tag	"Telegram"
+type	"selector"
+outbounds	
+0	"HongKong"
+1	"TaiWan"
+2	"Singapore"
+3	"Japan"
+4	"America"
+5	"Others"
+4	
+tag	"Twitter"
+type	"selector"
+outbounds	
+0	"HongKong"
+1	"TaiWan"
+2	"Singapore"
+3	"Japan"
+4	"America"
+5	"Others"
+5	
+tag	"Facebook"
+type	"selector"
+outbounds	
+0	"HongKong"
+1	"TaiWan"
+2	"Singapore"
+3	"Japan"
+4	"America"
+5	"Others"
+6	
+tag	"BiliBili"
+type	"selector"
+outbounds	
+0	"direct"
+1	"HongKong"
+2	"TaiWan"
+7	
+tag	"Bahamut"
+type	"selector"
+outbounds	
+0	"HongKong"
+1	"TaiWan"
+2	"Singapore"
+3	"Japan"
+4	"America"
+5	"Others"
+default	"TaiWan"
+8	
+tag	"Spotify"
+type	"selector"
+outbounds	
+0	"HongKong"
+1	"TaiWan"
+2	"Singapore"
+3	"Japan"
+4	"America"
+5	"Others"
+9	
+tag	"TikTok"
+type	"selector"
+outbounds	
+0	"HongKong"
+1	"TaiWan"
+2	"Singapore"
+3	"Japan"
+4	"America"
+default	"Singapore"
+10	
+tag	"NETFLIX"
+type	"selector"
+outbounds	
+0	"HongKong"
+1	"TaiWan"
+2	"Singapore"
+3	"Japan"
+4	"America"
+5	"Others"
+11	
+tag	"Disney+"
+type	"selector"
+outbounds	
+0	"HongKong"
+1	"TaiWan"
+2	"Singapore"
+3	"Japan"
+4	"America"
+5	"Others"
+12	
+tag	"Apple"
+type	"selector"
+outbounds	
+0	"direct"
+1	"HongKong"
+2	"TaiWan"
+3	"Singapore"
+4	"Japan"
+5	"America"
+6	"Others"
+13	
+tag	"Microsoft"
+type	"selector"
+outbounds	
+0	"direct"
+1	"HongKong"
+2	"TaiWan"
+3	"Singapore"
+4	"Japan"
+5	"America"
+6	"Others"
+14	
+tag	"Games"
+type	"selector"
+outbounds	
+0	"direct"
+1	"HongKong"
+2	"TaiWan"
+3	"Singapore"
+4	"Japan"
+5	"America"
+6	"Others"
+15	
+tag	"Streaming"
+type	"selector"
+outbounds	
+0	"HongKong"
+1	"TaiWan"
+2	"Singapore"
+3	"Japan"
+4	"America"
+5	"Others"
+16	
+tag	"Global"
+type	"selector"
+outbounds	
+0	"direct"
+1	"HongKong"
+2	"TaiWan"
+3	"Singapore"
+4	"Japan"
+5	"America"
+6	"Others"
+default	"HongKong"
+17	
+tag	"China"
+type	"selector"
+outbounds	
+0	"direct"
+1	"proxy"
+18	
+tag	"AdBlock"
+type	"selector"
+outbounds	
+0	"block"
+1	"direct"
+19	
+tag	"HongKong"
+type	"selector"
+outbounds	
+0	"proxy"
+20	
+tag	"TaiWan"
+type	"selector"
+outbounds	
+0	"proxy"
+21	
+tag	"Singapore"
+type	"selector"
+outbounds	
+0	"proxy"
+22	
+tag	"Japan"
+type	"selector"
+outbounds	
+0	"proxy"
+23	
+tag	"America"
+type	"selector"
+outbounds	
+0	"proxy"
+24	
+tag	"Others"
+type	"selector"
+outbounds	
+0	"CF-CDN"
+1	"CF-CDN 2"
+2	"CF-CDN 3"
+3	"CF-CDN 4"
+4	"CF-CDN 5"
+5	"CF-CDN 6"
+6	"CF-CDN 7"
+7	"CF-CDN 8"
+8	"CF-CDN 9"
+9	"CF-CDN 10"
+10	"CF-CDN 11"
+11	"CF-CDN 12"
+12	"CF-CDN 13"
+13	"CF-CDN 14"
+14	"CF-CDN 15"
+15	"CF-CDN 16"
+16	"CF-CDN 17"
+17	"CF-CDN 18"
+18	"CF-CDN 19"
+19	"CF-CDN 20"
+20	"CF-CDN 21"
+21	"CF-CDN 22"
+22	"CF-CDN 23"
+23	"CF-CDN 24"
+24	"CF-CDN 25"
+25	"CF-CDN 26"
+26	"CF-CDN 27"
+27	"CF-CDN 28"
+28	"CF-CDN 29"
+29	"CF-CDN 30"
+30	"CF-CDN 31"
+31	"CF-CDN 32"
+32	"CF-CDN 33"
+33	"CF-CDN 34"
+34	"CF-CDN 35"
+35	"CF-CDN 36"
+36	"CF-CDN 37"
+37	"CF-CDN 38"
+38	"CF-CDN 39"
+39	"CF-CDN 40"
+40	"CF-CDN 41"
+41	"CF-CDN 42"
+42	"CF-CDN 43"
+43	"CF-CDN 44"
+44	"CF-CDN 45"
+45	"CF-CDN 46"
+46	"CF-CDN 47"
+47	"CF-CDN 48"
+48	"CF-CDN 49"
+49	"CF-CDN 50"
+50	"CF-CDN 51"
+51	"CF-CDN 52"
+52	"CF-CDN 53"
+53	"CF-CDN 54"
+54	"CF-CDN 55"
+55	"CF-CDN 56"
+56	"CF-CDN 57"
+57	"CF-CDN 58"
+58	"CF-CDN 59"
+59	"CF-CDN 60"
+60	"CF-CDN 61"
+61	"CF-CDN 62"
+62	"CF-CDN 63"
+63	"CF-CDN 64"
+64	"CF-CDN 65"
+65	"CF-CDN 66"
+66	"CF-CDN 67"
+67	"CF-CDN 68"
+68	"CF-CDN 69"
+69	"CF-CDN 70"
+70	"CF-CDN 71"
+71	"CF-CDN 72"
+72	"CF-CDN 73"
+73	"CF-CDN 74"
+74	"CF-CDN 75"
+75	"CF-CDN 76"
+76	"CF-CDN 77"
+77	"CF-CDN 78"
+78	"CF-CDN 79"
+79	"CF-CDN 80"
+80	"CF-CDN 81"
+81	"CF-CDN 82"
+82	"CF-CDN 83"
+83	"CF-CDN 84"
+84	"CF-CDN 85"
+85	"CF-CDN 86"
+86	"CF-CDN 87"
+87	"CF-CDN 88"
+88	"CF-CDN 89"
+89	"CF-CDN 90"
+90	"CF-CDN 91"
+91	"CF-CDN 92"
+92	"CF-CDN 93"
+93	"CF-CDN 94"
+94	"CF-CDN 95"
+95	"CF-CDN 96"
+96	"CF-CDN 97"
+97	"CF-CDN 98"
+98	"CF-CDN 99"
+99	"CF-CDN 100"
+100	"proxy"
+25	
+tag	"auto"
+type	"urltest"
+outbounds	
+0	"CF-CDN"
+1	"CF-CDN 2"
+2	"CF-CDN 3"
+3	"CF-CDN 4"
+4	"CF-CDN 5"
+5	"CF-CDN 6"
+6	"CF-CDN 7"
+7	"CF-CDN 8"
+8	"CF-CDN 9"
+9	"CF-CDN 10"
+10	"CF-CDN 11"
+11	"CF-CDN 12"
+12	"CF-CDN 13"
+13	"CF-CDN 14"
+14	"CF-CDN 15"
+15	"CF-CDN 16"
+16	"CF-CDN 17"
+17	"CF-CDN 18"
+18	"CF-CDN 19"
+19	"CF-CDN 20"
+20	"CF-CDN 21"
+21	"CF-CDN 22"
+22	"CF-CDN 23"
+23	"CF-CDN 24"
+24	"CF-CDN 25"
+25	"CF-CDN 26"
+26	"CF-CDN 27"
+27	"CF-CDN 28"
+28	"CF-CDN 29"
+29	"CF-CDN 30"
+30	"CF-CDN 31"
+31	"CF-CDN 32"
+32	"CF-CDN 33"
+33	"CF-CDN 34"
+34	"CF-CDN 35"
+35	"CF-CDN 36"
+36	"CF-CDN 37"
+37	"CF-CDN 38"
+38	"CF-CDN 39"
+39	"CF-CDN 40"
+40	"CF-CDN 41"
+41	"CF-CDN 42"
+42	"CF-CDN 43"
+43	"CF-CDN 44"
+44	"CF-CDN 45"
+45	"CF-CDN 46"
+46	"CF-CDN 47"
+47	"CF-CDN 48"
+48	"CF-CDN 49"
+49	"CF-CDN 50"
+50	"CF-CDN 51"
+51	"CF-CDN 52"
+52	"CF-CDN 53"
+53	"CF-CDN 54"
+54	"CF-CDN 55"
+55	"CF-CDN 56"
+56	"CF-CDN 57"
+57	"CF-CDN 58"
+58	"CF-CDN 59"
+59	"CF-CDN 60"
+60	"CF-CDN 61"
+61	"CF-CDN 62"
+62	"CF-CDN 63"
+63	"CF-CDN 64"
+64	"CF-CDN 65"
+65	"CF-CDN 66"
+66	"CF-CDN 67"
+67	"CF-CDN 68"
+68	"CF-CDN 69"
+69	"CF-CDN 70"
+70	"CF-CDN 71"
+71	"CF-CDN 72"
+72	"CF-CDN 73"
+73	"CF-CDN 74"
+74	"CF-CDN 75"
+75	"CF-CDN 76"
+76	"CF-CDN 77"
+77	"CF-CDN 78"
+78	"CF-CDN 79"
+79	"CF-CDN 80"
+80	"CF-CDN 81"
+81	"CF-CDN 82"
+82	"CF-CDN 83"
+83	"CF-CDN 84"
+84	"CF-CDN 85"
+85	"CF-CDN 86"
+86	"CF-CDN 87"
+87	"CF-CDN 88"
+88	"CF-CDN 89"
+89	"CF-CDN 90"
+90	"CF-CDN 91"
+91	"CF-CDN 92"
+92	"CF-CDN 93"
+93	"CF-CDN 94"
+94	"CF-CDN 95"
+95	"CF-CDN 96"
+96	"CF-CDN 97"
+97	"CF-CDN 98"
+98	"CF-CDN 99"
+99	"CF-CDN 100"
+url	"http://www.gstatic.com/generate_204"
+interval	"10m"
+tolerance	50
+26	
+type	"direct"
+tag	"direct"
+27	
+type	"dns"
+tag	"dns-out"
+28	
+type	"block"
+tag	"block"
+29	
+tag	"CF-CDN"
+type	"vmess"
+server	"154.92.9.235"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+30	
+tag	"CF-CDN 2"
+type	"vmess"
+server	"154.92.9.197"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+31	
+tag	"CF-CDN 3"
+type	"vmess"
+server	"156.238.19.206"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+32	
+tag	"CF-CDN 4"
+type	"vmess"
+server	"156.238.19.114"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+33	
+tag	"CF-CDN 5"
+type	"vmess"
+server	"156.238.18.123"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+34	
+tag	"CF-CDN 6"
+type	"vmess"
+server	"156.238.18.37"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+35	
+tag	"CF-CDN 7"
+type	"vmess"
+server	"156.238.19.14"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+36	
+tag	"CF-CDN 8"
+type	"vmess"
+server	"156.238.19.187"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+37	
+tag	"CF-CDN 9"
+type	"vmess"
+server	"156.238.18.244"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+38	
+tag	"CF-CDN 10"
+type	"vmess"
+server	"156.238.19.253"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+39	
+tag	"CF-CDN 11"
+type	"vmess"
+server	"154.92.9.7"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+40	
+tag	"CF-CDN 12"
+type	"vmess"
+server	"154.92.9.26"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+41	
+tag	"CF-CDN 13"
+type	"vmess"
+server	"156.238.19.251"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+42	
+tag	"CF-CDN 14"
+type	"vmess"
+server	"156.238.19.40"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+43	
+tag	"CF-CDN 15"
+type	"vmess"
+server	"154.92.9.164"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+44	
+tag	"CF-CDN 16"
+type	"vmess"
+server	"156.238.18.89"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+45	
+tag	"CF-CDN 17"
+type	"vmess"
+server	"156.238.19.228"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+46	
+tag	"CF-CDN 18"
+type	"vmess"
+server	"154.92.9.65"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+47	
+tag	"CF-CDN 19"
+type	"vmess"
+server	"156.238.19.75"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+48	
+tag	"CF-CDN 20"
+type	"vmess"
+server	"154.92.9.132"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+49	
+tag	"CF-CDN 21"
+type	"vmess"
+server	"156.238.19.156"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+50	
+tag	"CF-CDN 22"
+type	"vmess"
+server	"156.238.19.250"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+51	
+tag	"CF-CDN 23"
+type	"vmess"
+server	"154.92.9.167"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+52	
+tag	"CF-CDN 24"
+type	"vmess"
+server	"156.238.18.233"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+53	
+tag	"CF-CDN 25"
+type	"vmess"
+server	"156.238.19.58"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+54	
+tag	"CF-CDN 26"
+type	"vmess"
+server	"156.238.18.21"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+55	
+tag	"CF-CDN 27"
+type	"vmess"
+server	"156.238.19.166"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+56	
+tag	"CF-CDN 28"
+type	"vmess"
+server	"154.92.9.143"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+57	
+tag	"CF-CDN 29"
+type	"vmess"
+server	"154.92.9.159"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+58	
+tag	"CF-CDN 30"
+type	"vmess"
+server	"156.238.18.142"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+59	
+tag	"CF-CDN 31"
+type	"vmess"
+server	"156.238.19.208"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+60	
+tag	"CF-CDN 32"
+type	"vmess"
+server	"154.92.9.11"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+61	
+tag	"CF-CDN 33"
+type	"vmess"
+server	"156.238.18.8"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+62	
+tag	"CF-CDN 34"
+type	"vmess"
+server	"156.238.18.238"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+63	
+tag	"CF-CDN 35"
+type	"vmess"
+server	"154.92.9.6"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+64	
+tag	"CF-CDN 36"
+type	"vmess"
+server	"154.92.9.239"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+65	
+tag	"CF-CDN 37"
+type	"vmess"
+server	"156.238.19.128"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+66	
+tag	"CF-CDN 38"
+type	"vmess"
+server	"156.238.19.113"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+67	
+tag	"CF-CDN 39"
+type	"vmess"
+server	"156.238.18.76"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+68	
+tag	"CF-CDN 40"
+type	"vmess"
+server	"154.92.9.185"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+69	
+tag	"CF-CDN 41"
+type	"vmess"
+server	"154.92.9.160"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+70	
+tag	"CF-CDN 42"
+type	"vmess"
+server	"154.92.9.60"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+71	
+tag	"CF-CDN 43"
+type	"vmess"
+server	"156.238.19.195"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+72	
+tag	"CF-CDN 44"
+type	"vmess"
+server	"156.238.19.177"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+73	
+tag	"CF-CDN 45"
+type	"vmess"
+server	"156.238.19.222"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+74	
+tag	"CF-CDN 46"
+type	"vmess"
+server	"156.238.19.30"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+75	
+tag	"CF-CDN 47"
+type	"vmess"
+server	"154.92.9.95"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+76	
+tag	"CF-CDN 48"
+type	"vmess"
+server	"156.238.19.13"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+77	
+tag	"CF-CDN 49"
+type	"vmess"
+server	"156.238.18.50"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+78	
+tag	"CF-CDN 50"
+type	"vmess"
+server	"156.238.18.125"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+79	
+tag	"CF-CDN 51"
+type	"vmess"
+server	"156.238.18.91"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+80	
+tag	"CF-CDN 52"
+type	"vmess"
+server	"156.238.18.168"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+81	
+tag	"CF-CDN 53"
+type	"vmess"
+server	"156.238.19.155"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+82	
+tag	"CF-CDN 54"
+type	"vmess"
+server	"154.92.9.219"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+83	
+tag	"CF-CDN 55"
+type	"vmess"
+server	"156.238.18.183"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+84	
+tag	"CF-CDN 56"
+type	"vmess"
+server	"156.238.18.159"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+85	
+tag	"CF-CDN 57"
+type	"vmess"
+server	"156.238.18.88"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+86	
+tag	"CF-CDN 58"
+type	"vmess"
+server	"156.238.18.62"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+87	
+tag	"CF-CDN 59"
+type	"vmess"
+server	"154.92.9.90"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+88	
+tag	"CF-CDN 60"
+type	"vmess"
+server	"156.238.18.103"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+89	
+tag	"CF-CDN 61"
+type	"vmess"
+server	"156.238.19.65"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+90	
+tag	"CF-CDN 62"
+type	"vmess"
+server	"156.238.18.86"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+91	
+tag	"CF-CDN 63"
+type	"vmess"
+server	"156.238.19.67"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+92	
+tag	"CF-CDN 64"
+type	"vmess"
+server	"43.153.181.217"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+93	
+tag	"CF-CDN 65"
+type	"vmess"
+server	"156.238.18.226"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+94	
+tag	"CF-CDN 66"
+type	"vmess"
+server	"156.238.18.197"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+95	
+tag	"CF-CDN 67"
+type	"vmess"
+server	"156.238.18.249"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+96	
+tag	"CF-CDN 68"
+type	"vmess"
+server	"154.92.9.168"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+97	
+tag	"CF-CDN 69"
+type	"vmess"
+server	"156.238.19.105"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+98	
+tag	"CF-CDN 70"
+type	"vmess"
+server	"156.238.19.85"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+99	
+tag	"CF-CDN 71"
+type	"vmess"
+server	"154.92.9.24"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+100	
+tag	"CF-CDN 72"
+type	"vmess"
+server	"154.92.9.17"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+101	
+tag	"CF-CDN 73"
+type	"vmess"
+server	"154.92.9.70"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+102	
+tag	"CF-CDN 74"
+type	"vmess"
+server	"156.238.18.77"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+103	
+tag	"CF-CDN 75"
+type	"vmess"
+server	"156.238.19.41"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+104	
+tag	"CF-CDN 76"
+type	"vmess"
+server	"156.238.19.174"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+105	
+tag	"CF-CDN 77"
+type	"vmess"
+server	"156.238.19.37"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+106	
+tag	"CF-CDN 78"
+type	"vmess"
+server	"154.92.9.84"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+107	
+tag	"CF-CDN 79"
+type	"vmess"
+server	"156.238.18.60"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+108	
+tag	"CF-CDN 80"
+type	"vmess"
+server	"154.92.9.246"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+109	
+tag	"CF-CDN 81"
+type	"vmess"
+server	"154.92.9.89"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+110	
+tag	"CF-CDN 82"
+type	"vmess"
+server	"156.238.18.41"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+111	
+tag	"CF-CDN 83"
+type	"vmess"
+server	"154.92.9.245"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+112	
+tag	"CF-CDN 84"
+type	"vmess"
+server	"156.238.19.59"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+113	
+tag	"CF-CDN 85"
+type	"vmess"
+server	"156.238.18.94"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+114	
+tag	"CF-CDN 86"
+type	"vmess"
+server	"156.238.19.241"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+115	
+tag	"CF-CDN 87"
+type	"vmess"
+server	"156.238.18.108"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+116	
+tag	"CF-CDN 88"
+type	"vmess"
+server	"156.238.18.139"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+117	
+tag	"CF-CDN 89"
+type	"vmess"
+server	"154.92.9.98"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+118	
+tag	"CF-CDN 90"
+type	"vmess"
+server	"154.92.9.113"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+119	
+tag	"CF-CDN 91"
+type	"vmess"
+server	"156.238.19.127"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+120	
+tag	"CF-CDN 92"
+type	"vmess"
+server	"156.238.18.224"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+121	
+tag	"CF-CDN 93"
+type	"vmess"
+server	"156.238.19.139"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+122	
+tag	"CF-CDN 94"
+type	"vmess"
+server	"154.92.9.141"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+123	
+tag	"CF-CDN 95"
+type	"vmess"
+server	"156.238.19.42"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+124	
+tag	"CF-CDN 96"
+type	"vmess"
+server	"156.238.18.157"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+125	
+tag	"CF-CDN 97"
+type	"vmess"
+server	"156.238.19.201"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+126	
+tag	"CF-CDN 98"
+type	"vmess"
+server	"156.238.18.31"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+127	
+tag	"CF-CDN 99"
+type	"vmess"
+server	"154.92.9.194"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+128	
+tag	"CF-CDN 100"
+type	"vmess"
+server	"156.238.19.247"
+server_port	80
+uuid	"8452e928-760c-497f-b1df-8bc8591bee91"
+security	"auto"
+alter_id	0
+packet_encoding	"xudp"
+transport	
+type	"ws"
+headers	
+Host	"bellwether.us.kg"
+path	"/bb"
+route	
+auto_detect_interface	true
+final	"proxy"
+rules	
+0	
+protocol	"dns"
+outbound	"dns-out"
+1	
+port	53
+outbound	"dns-out"
+2	
+network	"udp"
+port	443
+outbound	"block"
+3	
+rule_set	"geosite-category-ads-all"
+outbound	"AdBlock"
+4	
+clash_mode	"direct"
+outbound	"direct"
+5	
+clash_mode	"global"
+outbound	"proxy"
+6	
+domain	
+0	"clash.razord.top"
+1	"yacd.metacubex.one"
+2	"yacd.haishan.me"
+3	"d.metacubex.one"
+outbound	"direct"
+7	
+rule_set	"geosite-openai"
+outbound	"OpenAI"
+8	
+rule_set	"geosite-youtube"
+outbound	"Google"
+9	
+rule_set	"geoip-google"
+outbound	"Google"
+10	
+rule_set	"geosite-google"
+outbound	"Google"
+11	
+rule_set	"geosite-github"
+outbound	"Google"
+12	
+rule_set	"geoip-telegram"
+outbound	"Telegram"
+13	
+rule_set	"geosite-telegram"
+outbound	"Telegram"
+14	
+rule_set	"geoip-twitter"
+outbound	"Twitter"
+15	
+rule_set	"geosite-twitter"
+outbound	"Twitter"
+16	
+rule_set	"geoip-facebook"
+outbound	"Facebook"
+17	
+rule_set	
+0	"geosite-facebook"
+1	"geosite-instagram"
+outbound	"Facebook"
+18	
+rule_set	"geoip-bilibili"
+outbound	"BiliBili"
+19	
+rule_set	"geosite-bilibili"
+outbound	"BiliBili"
+20	
+rule_set	"geosite-bahamut"
+outbound	"Bahamut"
+21	
+rule_set	"geosite-spotify"
+outbound	"Spotify"
+22	
+rule_set	"geosite-tiktok"
+outbound	"TikTok"
+23	
+rule_set	"geoip-netflix"
+outbound	"NETFLIX"
+24	
+rule_set	"geosite-netflix"
+outbound	"NETFLIX"
+25	
+rule_set	"geosite-disney"
+outbound	"Disney+"
+26	
+rule_set	"geosite-apple"
+outbound	"Apple"
+27	
+rule_set	"geosite-amazon"
+outbound	"Apple"
+28	
+rule_set	"geosite-microsoft"
+outbound	"Microsoft"
+29	
+rule_set	"geosite-category-games"
+outbound	"Games"
+30	
+rule_set	"geosite-hbo"
+outbound	"Streaming"
+31	
+rule_set	"geosite-primevideo"
+outbound	"Streaming"
+32	
+rule_set	"geosite-geolocation-!cn"
+outbound	"Global"
+33	
+rule_set	"geosite-private"
+outbound	"direct"
+34	
+ip_is_private	true
+outbound	"direct"
+35	
+rule_set	"geoip-cn"
+outbound	"China"
+36	
+rule_set	"geosite-cn"
+outbound	"China"
+rule_set	
+0	
+tag	"geoip-google"
+type	"remote"
+format	"binary"
+url	"https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/google.srs"
+download_detour	"direct"
+1	
+tag	"geoip-telegram"
+type	"remote"
+format	"binary"
+url	"https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/telegram.srs"
+download_detour	"direct"
+2	
+tag	"geoip-twitter"
+type	"remote"
+format	"binary"
+url	"https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/twitter.srs"
+download_detour	"direct"
+3	
+tag	"geoip-facebook"
+type	"remote"
+format	"binary"
+url	"https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/facebook.srs"
+download_detour	"direct"
+4	
+tag	"geoip-netflix"
+type	"remote"
+format	"binary"
+url	"https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/netflix.srs"
+download_detour	"direct"
+5	
+tag	"geoip-apple"
+type	"remote"
+format	"binary"
+url	"https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo-lite/geoip/apple.srs"
+download_detour	"direct"
+6	
+tag	"geoip-bilibili"
+type	"remote"
+format	"binary"
+url	"https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo-lite/geoip/bilibili.srs"
+download_detour	"direct"
+7	
+tag	"geoip-cn"
+type	"remote"
+format	"binary"
+url	"https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs"
+download_detour	"direct"
+8	
+tag	"geosite-private"
+type	"remote"
+format	"binary"
+url	"https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/private.srs"
+download_detour	"direct"
+9	
+tag	"geosite-openai"
+type	"remote"
+format	"binary"
+url	"https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/openai.srs"
+download_detour	"direct"
+10	
+tag	"geosite-youtube"
+type	"remote"
+format	"binary"
+url	"https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/youtube.srs"
+download_detour	"direct"
+11	
+tag	"geosite-google"
+type	"remote"
+format	"binary"
+url	"https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/google.srs"
+download_detour	"direct"
+12	
+tag	"geosite-github"
+type	"remote"
+format	"binary"
+url	"https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/github.srs"
+download_detour	"direct"
+13	
+tag	"geosite-telegram"
+type	"remote"
+format	"binary"
+url	"https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/telegram.srs"
+download_detour	"direct"
+14	
+tag	"geosite-twitter"
+type	"remote"
+format	"binary"
+url	"https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/twitter.srs"
+download_detour	"direct"
+15	
+tag	"geosite-facebook"
+type	"remote"
+format	"binary"
+url	"https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/facebook.srs"
+download_detour	"direct"
+16	
+tag	"geosite-instagram"
+type	"remote"
+format	"binary"
+url	"https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/instagram.srs"
+download_detour	"direct"
+17	
+tag	"geosite-bilibili"
+type	"remote"
+format	"binary"
+url	"https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/bilibili.srs"
+download_detour	"direct"
+18	
+tag	"geosite-bahamut"
+type	"remote"
+format	"binary"
+url	"https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/bahamut.srs"
+download_detour	"direct"
+19	
+tag	"geosite-spotify"
+type	"remote"
+format	"binary"
+url	"https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/spotify.srs"
+download_detour	"direct"
+20	
+tag	"geosite-tiktok"
+type	"remote"
+format	"binary"
+url	"https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/tiktok.srs"
+download_detour	"direct"
+21	
+tag	"geosite-netflix"
+type	"remote"
+format	"binary"
+url	"https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/netflix.srs"
+download_detour	"direct"
+22	
+tag	"geosite-disney"
+type	"remote"
+format	"binary"
+url	"https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/disney.srs"
+download_detour	"direct"
+23	
+tag	"geosite-apple"
+type	"remote"
+format	"binary"
+url	"https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/apple.srs"
+download_detour	"direct"
+24	
+tag	"geosite-amazon"
+type	"remote"
+format	"binary"
+url	"https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/amazon.srs"
+download_detour	"direct"
+25	
+tag	"geosite-microsoft"
+type	"remote"
+format	"binary"
+url	"https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/microsoft.srs"
+download_detour	"direct"
+26	
+tag	"geosite-category-games"
+type	"remote"
+format	"binary"
+url	"https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-games.srs"
+download_detour	"direct"
+27	
+tag	"geosite-hbo"
+type	"remote"
+format	"binary"
+url	"https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/hbo.srs"
+download_detour	"direct"
+28	
+tag	"geosite-primevideo"
+type	"remote"
+format	"binary"
+url	"https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/primevideo.srs"
+download_detour	"direct"
+29	
+tag	"geosite-cn"
+type	"remote"
+format	"binary"
+url	"https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs"
+download_detour	"direct"
+30	
+tag	"geosite-geolocation-!cn"
+type	"remote"
+format	"binary"
+url	"https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs"
+download_detour	"direct"
+31	
+tag	"geosite-category-ads-all"
+type	"remote"
+format	"binary"
+url	"https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ads-all.srs"
+download_detour	"direct"
