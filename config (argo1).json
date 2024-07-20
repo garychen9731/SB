@@ -1,0 +1,3074 @@
+{
+  "log": {
+    "level": "debug",
+    "timestamp": true
+  },
+  "experimental": {
+    "clash_api": {
+      "external_controller": "127.0.0.1:9090",
+      "external_ui": "ui",
+      "secret": "",
+      "external_ui_download_url": "https://mirror.ghproxy.com/https://github.com/MetaCubeX/Yacd-meta/archive/gh-pages.zip",
+      "external_ui_download_detour": "direct",
+      "default_mode": "rule"
+    },
+    "cache_file": {
+      "enabled": true,
+      "store_fakeip": false
+    }
+  },
+  "dns": {
+    "servers": [
+      {
+        "tag": "proxyDns",
+        "address": "tls://8.8.8.8",
+        "detour": "proxy"
+      },
+      {
+        "tag": "localDns",
+        "address": "https://223.5.5.5/dns-query",
+        "detour": "direct"
+      },
+      {
+        "tag": "block",
+        "address": "rcode://success"
+      }
+    ],
+    "rules": [
+      {
+        "domain": [
+          "ghproxy.com",
+          "cdn.jsdelivr.net",
+          "testingcf.jsdelivr.net"
+        ],
+        "server": "localDns"
+      },
+      {
+        "rule_set": "geosite-category-ads-all",
+        "server": "block"
+      },
+      {
+        "outbound": "any",
+        "server": "localDns",
+        "disable_cache": true
+      },
+      {
+        "rule_set": "geosite-cn",
+        "server": "localDns"
+      },
+      {
+        "clash_mode": "direct",
+        "server": "localDns"
+      },
+      {
+        "clash_mode": "global",
+        "server": "proxyDns"
+      },
+      {
+        "rule_set": "geosite-geolocation-!cn",
+        "server": "proxyDns"
+      }
+    ],
+    "final": "localDns",
+    "strategy": "ipv4_only"
+  },
+  "inbounds": [
+    {
+      "type": "tun",
+      "inet4_address": "172.19.0.1/30",
+      "mtu": 9000,
+      "auto_route": true,
+      "strict_route": true,
+      "sniff": true,
+      "endpoint_independent_nat": false,
+      "stack": "system",
+      "platform": {
+        "http_proxy": {
+          "enabled": true,
+          "server": "127.0.0.1",
+          "server_port": 2080
+        }
+      }
+    },
+    {
+      "type": "mixed",
+      "listen": "127.0.0.1",
+      "listen_port": 2080,
+      "sniff": true,
+      "users": []
+    }
+  ],
+  "outbounds": [
+    {
+      "tag": "proxy",
+      "type": "selector",
+      "outbounds": [
+        "auto",
+        "direct",
+        "Argo",
+        "Argo 2",
+        "Argo 3",
+        "Argo 4",
+        "Argo 5",
+        "Argo 6",
+        "Argo 7",
+        "Argo 8",
+        "Argo 9",
+        "Argo 10",
+        "Argo 11",
+        "Argo 12",
+        "Argo 13",
+        "Argo 14",
+        "Argo 15",
+        "Argo 16",
+        "Argo 17",
+        "Argo 18",
+        "Argo 19",
+        "Argo 20",
+        "Argo 21",
+        "Argo 22",
+        "Argo 23",
+        "Argo 24",
+        "Argo 25",
+        "Argo 26",
+        "Argo 27",
+        "Argo 28",
+        "Argo 29",
+        "Argo 30",
+        "Argo 31",
+        "Argo 32",
+        "Argo 33",
+        "Argo 34",
+        "Argo 35",
+        "Argo 36",
+        "Argo 37",
+        "Argo 38",
+        "Argo 39",
+        "Argo 40",
+        "Argo 41",
+        "Argo 42",
+        "Argo 43",
+        "Argo 44",
+        "Argo 45",
+        "Argo 46",
+        "Argo 47",
+        "Argo 48",
+        "Argo 49",
+        "Argo 50",
+        "Argo 51",
+        "Argo 52",
+        "Argo 53",
+        "Argo 54",
+        "Argo 55",
+        "Argo 56",
+        "Argo 57",
+        "Argo 58",
+        "Argo 59",
+        "Argo 60",
+        "Argo 61",
+        "Argo 62",
+        "Argo 63",
+        "Argo 64",
+        "Argo 65",
+        "Argo 66",
+        "Argo 67",
+        "Argo 68",
+        "Argo 69",
+        "Argo 70",
+        "Argo 71",
+        "Argo 72",
+        "Argo 73",
+        "Argo 74",
+        "Argo 75",
+        "Argo 76",
+        "Argo 77",
+        "Argo 78",
+        "Argo 79",
+        "Argo 80",
+        "Argo 81",
+        "Argo 82",
+        "Argo 83",
+        "Argo 84",
+        "Argo 85",
+        "Argo 86",
+        "Argo 87",
+        "Argo 88",
+        "Argo 89",
+        "Argo 90",
+        "Argo 91",
+        "Argo 92",
+        "Argo 93",
+        "Argo 94",
+        "Argo 95",
+        "Argo 96",
+        "Argo 97",
+        "Argo 98",
+        "Argo 99",
+        "Argo 100"
+      ]
+    },
+    {
+      "tag": "OpenAI",
+      "type": "selector",
+      "outbounds": [
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ],
+      "default": "America"
+    },
+    {
+      "tag": "Google",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "Telegram",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "Twitter",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "Facebook",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "BiliBili",
+      "type": "selector",
+      "outbounds": [
+        "direct",
+        "HongKong",
+        "TaiWan"
+      ]
+    },
+    {
+      "tag": "Bahamut",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ],
+      "default": "TaiWan"
+    },
+    {
+      "tag": "Spotify",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "TikTok",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America"
+      ],
+      "default": "Singapore"
+    },
+    {
+      "tag": "NETFLIX",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "Disney+",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "Apple",
+      "type": "selector",
+      "outbounds": [
+        "direct",
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "Microsoft",
+      "type": "selector",
+      "outbounds": [
+        "direct",
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "Games",
+      "type": "selector",
+      "outbounds": [
+        "direct",
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "Streaming",
+      "type": "selector",
+      "outbounds": [
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ]
+    },
+    {
+      "tag": "Global",
+      "type": "selector",
+      "outbounds": [
+        "direct",
+        "HongKong",
+        "TaiWan",
+        "Singapore",
+        "Japan",
+        "America",
+        "Others"
+      ],
+      "default": "HongKong"
+    },
+    {
+      "tag": "China",
+      "type": "selector",
+      "outbounds": [
+        "direct",
+        "proxy"
+      ]
+    },
+    {
+      "tag": "AdBlock",
+      "type": "selector",
+      "outbounds": [
+        "block",
+        "direct"
+      ]
+    },
+    {
+      "tag": "HongKong",
+      "type": "selector",
+      "outbounds": [
+        "proxy"
+      ]
+    },
+    {
+      "tag": "TaiWan",
+      "type": "selector",
+      "outbounds": [
+        "proxy"
+      ]
+    },
+    {
+      "tag": "Singapore",
+      "type": "selector",
+      "outbounds": [
+        "proxy"
+      ]
+    },
+    {
+      "tag": "Japan",
+      "type": "selector",
+      "outbounds": [
+        "proxy"
+      ]
+    },
+    {
+      "tag": "America",
+      "type": "selector",
+      "outbounds": [
+        "proxy"
+      ]
+    },
+    {
+      "tag": "Others",
+      "type": "selector",
+      "outbounds": [
+        "Argo",
+        "Argo 2",
+        "Argo 3",
+        "Argo 4",
+        "Argo 5",
+        "Argo 6",
+        "Argo 7",
+        "Argo 8",
+        "Argo 9",
+        "Argo 10",
+        "Argo 11",
+        "Argo 12",
+        "Argo 13",
+        "Argo 14",
+        "Argo 15",
+        "Argo 16",
+        "Argo 17",
+        "Argo 18",
+        "Argo 19",
+        "Argo 20",
+        "Argo 21",
+        "Argo 22",
+        "Argo 23",
+        "Argo 24",
+        "Argo 25",
+        "Argo 26",
+        "Argo 27",
+        "Argo 28",
+        "Argo 29",
+        "Argo 30",
+        "Argo 31",
+        "Argo 32",
+        "Argo 33",
+        "Argo 34",
+        "Argo 35",
+        "Argo 36",
+        "Argo 37",
+        "Argo 38",
+        "Argo 39",
+        "Argo 40",
+        "Argo 41",
+        "Argo 42",
+        "Argo 43",
+        "Argo 44",
+        "Argo 45",
+        "Argo 46",
+        "Argo 47",
+        "Argo 48",
+        "Argo 49",
+        "Argo 50",
+        "Argo 51",
+        "Argo 52",
+        "Argo 53",
+        "Argo 54",
+        "Argo 55",
+        "Argo 56",
+        "Argo 57",
+        "Argo 58",
+        "Argo 59",
+        "Argo 60",
+        "Argo 61",
+        "Argo 62",
+        "Argo 63",
+        "Argo 64",
+        "Argo 65",
+        "Argo 66",
+        "Argo 67",
+        "Argo 68",
+        "Argo 69",
+        "Argo 70",
+        "Argo 71",
+        "Argo 72",
+        "Argo 73",
+        "Argo 74",
+        "Argo 75",
+        "Argo 76",
+        "Argo 77",
+        "Argo 78",
+        "Argo 79",
+        "Argo 80",
+        "Argo 81",
+        "Argo 82",
+        "Argo 83",
+        "Argo 84",
+        "Argo 85",
+        "Argo 86",
+        "Argo 87",
+        "Argo 88",
+        "Argo 89",
+        "Argo 90",
+        "Argo 91",
+        "Argo 92",
+        "Argo 93",
+        "Argo 94",
+        "Argo 95",
+        "Argo 96",
+        "Argo 97",
+        "Argo 98",
+        "Argo 99",
+        "Argo 100",
+        "proxy"
+      ]
+    },
+    {
+      "tag": "auto",
+      "type": "urltest",
+      "outbounds": [
+        "Argo",
+        "Argo 2",
+        "Argo 3",
+        "Argo 4",
+        "Argo 5",
+        "Argo 6",
+        "Argo 7",
+        "Argo 8",
+        "Argo 9",
+        "Argo 10",
+        "Argo 11",
+        "Argo 12",
+        "Argo 13",
+        "Argo 14",
+        "Argo 15",
+        "Argo 16",
+        "Argo 17",
+        "Argo 18",
+        "Argo 19",
+        "Argo 20",
+        "Argo 21",
+        "Argo 22",
+        "Argo 23",
+        "Argo 24",
+        "Argo 25",
+        "Argo 26",
+        "Argo 27",
+        "Argo 28",
+        "Argo 29",
+        "Argo 30",
+        "Argo 31",
+        "Argo 32",
+        "Argo 33",
+        "Argo 34",
+        "Argo 35",
+        "Argo 36",
+        "Argo 37",
+        "Argo 38",
+        "Argo 39",
+        "Argo 40",
+        "Argo 41",
+        "Argo 42",
+        "Argo 43",
+        "Argo 44",
+        "Argo 45",
+        "Argo 46",
+        "Argo 47",
+        "Argo 48",
+        "Argo 49",
+        "Argo 50",
+        "Argo 51",
+        "Argo 52",
+        "Argo 53",
+        "Argo 54",
+        "Argo 55",
+        "Argo 56",
+        "Argo 57",
+        "Argo 58",
+        "Argo 59",
+        "Argo 60",
+        "Argo 61",
+        "Argo 62",
+        "Argo 63",
+        "Argo 64",
+        "Argo 65",
+        "Argo 66",
+        "Argo 67",
+        "Argo 68",
+        "Argo 69",
+        "Argo 70",
+        "Argo 71",
+        "Argo 72",
+        "Argo 73",
+        "Argo 74",
+        "Argo 75",
+        "Argo 76",
+        "Argo 77",
+        "Argo 78",
+        "Argo 79",
+        "Argo 80",
+        "Argo 81",
+        "Argo 82",
+        "Argo 83",
+        "Argo 84",
+        "Argo 85",
+        "Argo 86",
+        "Argo 87",
+        "Argo 88",
+        "Argo 89",
+        "Argo 90",
+        "Argo 91",
+        "Argo 92",
+        "Argo 93",
+        "Argo 94",
+        "Argo 95",
+        "Argo 96",
+        "Argo 97",
+        "Argo 98",
+        "Argo 99",
+        "Argo 100"
+      ],
+      "url": "http://www.gstatic.com/generate_204",
+      "interval": "10m",
+      "tolerance": 50
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "dns",
+      "tag": "dns-out"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    },
+    {
+      "tag": "Argo",
+      "type": "vless",
+      "server": "27.50.48.152",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 2",
+      "type": "vless",
+      "server": "104.29.59.95",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 3",
+      "type": "vless",
+      "server": "27.50.48.130",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 4",
+      "type": "vless",
+      "server": "103.160.204.105",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 5",
+      "type": "vless",
+      "server": "27.50.49.149",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 6",
+      "type": "vless",
+      "server": "104.29.59.74",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 7",
+      "type": "vless",
+      "server": "104.29.68.147",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 8",
+      "type": "vless",
+      "server": "103.184.45.64",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 9",
+      "type": "vless",
+      "server": "104.29.68.109",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 10",
+      "type": "vless",
+      "server": "104.29.68.48",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 11",
+      "type": "vless",
+      "server": "104.29.59.125",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 12",
+      "type": "vless",
+      "server": "103.184.44.91",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 13",
+      "type": "vless",
+      "server": "103.184.45.106",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 14",
+      "type": "vless",
+      "server": "104.29.67.78",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 15",
+      "type": "vless",
+      "server": "27.50.48.4",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 16",
+      "type": "vless",
+      "server": "104.29.59.163",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 17",
+      "type": "vless",
+      "server": "104.29.67.153",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 18",
+      "type": "vless",
+      "server": "27.50.49.122",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 19",
+      "type": "vless",
+      "server": "104.29.68.121",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 20",
+      "type": "vless",
+      "server": "103.160.204.229",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 21",
+      "type": "vless",
+      "server": "104.29.67.64",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 22",
+      "type": "vless",
+      "server": "27.50.49.158",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 23",
+      "type": "vless",
+      "server": "27.50.48.233",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 24",
+      "type": "vless",
+      "server": "104.29.68.151",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 25",
+      "type": "vless",
+      "server": "104.29.68.51",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 26",
+      "type": "vless",
+      "server": "104.29.69.12",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 27",
+      "type": "vless",
+      "server": "103.184.45.28",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 28",
+      "type": "vless",
+      "server": "103.184.45.2",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 29",
+      "type": "vless",
+      "server": "104.29.68.107",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 30",
+      "type": "vless",
+      "server": "27.50.49.252",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 31",
+      "type": "vless",
+      "server": "103.160.204.216",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 32",
+      "type": "vless",
+      "server": "27.50.49.17",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 33",
+      "type": "vless",
+      "server": "103.184.45.161",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 34",
+      "type": "vless",
+      "server": "103.160.204.197",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 35",
+      "type": "vless",
+      "server": "104.29.59.190",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 36",
+      "type": "vless",
+      "server": "27.50.48.13",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 37",
+      "type": "vless",
+      "server": "104.29.59.44",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 38",
+      "type": "vless",
+      "server": "103.184.45.139",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 39",
+      "type": "vless",
+      "server": "103.184.45.127",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 40",
+      "type": "vless",
+      "server": "27.50.48.248",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 41",
+      "type": "vless",
+      "server": "103.184.45.42",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 42",
+      "type": "vless",
+      "server": "103.160.204.4",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 43",
+      "type": "vless",
+      "server": "104.29.69.89",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 44",
+      "type": "vless",
+      "server": "104.29.67.146",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 45",
+      "type": "vless",
+      "server": "104.29.69.26",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 46",
+      "type": "vless",
+      "server": "103.184.45.114",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 47",
+      "type": "vless",
+      "server": "104.29.68.134",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 48",
+      "type": "vless",
+      "server": "27.50.49.230",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 49",
+      "type": "vless",
+      "server": "103.184.44.64",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 50",
+      "type": "vless",
+      "server": "104.29.67.61",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 51",
+      "type": "vless",
+      "server": "104.29.68.66",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 52",
+      "type": "vless",
+      "server": "103.184.45.213",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 53",
+      "type": "vless",
+      "server": "103.184.45.31",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 54",
+      "type": "vless",
+      "server": "104.29.68.37",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 55",
+      "type": "vless",
+      "server": "103.184.45.200",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 56",
+      "type": "vless",
+      "server": "103.184.45.32",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 57",
+      "type": "vless",
+      "server": "104.29.67.77",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 58",
+      "type": "vless",
+      "server": "104.29.68.19",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 59",
+      "type": "vless",
+      "server": "104.29.67.90",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 60",
+      "type": "vless",
+      "server": "104.29.69.10",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 61",
+      "type": "vless",
+      "server": "27.50.48.29",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 62",
+      "type": "vless",
+      "server": "104.29.69.100",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 63",
+      "type": "vless",
+      "server": "104.29.67.127",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 64",
+      "type": "vless",
+      "server": "27.50.48.174",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 65",
+      "type": "vless",
+      "server": "103.160.204.45",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 66",
+      "type": "vless",
+      "server": "27.50.49.11",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 67",
+      "type": "vless",
+      "server": "27.50.48.151",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 68",
+      "type": "vless",
+      "server": "104.29.69.4",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 69",
+      "type": "vless",
+      "server": "27.50.49.43",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 70",
+      "type": "vless",
+      "server": "103.160.204.31",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 71",
+      "type": "vless",
+      "server": "27.50.49.152",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 72",
+      "type": "vless",
+      "server": "103.184.45.26",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 73",
+      "type": "vless",
+      "server": "104.29.59.193",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 74",
+      "type": "vless",
+      "server": "27.50.49.204",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 75",
+      "type": "vless",
+      "server": "104.29.68.26",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 76",
+      "type": "vless",
+      "server": "27.50.48.11",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 77",
+      "type": "vless",
+      "server": "104.29.68.119",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 78",
+      "type": "vless",
+      "server": "104.29.69.43",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 79",
+      "type": "vless",
+      "server": "27.50.48.177",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 80",
+      "type": "vless",
+      "server": "104.29.67.32",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 81",
+      "type": "vless",
+      "server": "27.50.49.160",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 82",
+      "type": "vless",
+      "server": "27.50.49.30",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 83",
+      "type": "vless",
+      "server": "103.184.45.147",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 84",
+      "type": "vless",
+      "server": "27.50.48.184",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 85",
+      "type": "vless",
+      "server": "103.160.204.63",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 86",
+      "type": "vless",
+      "server": "27.50.48.92",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 87",
+      "type": "vless",
+      "server": "27.50.48.2",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 88",
+      "type": "vless",
+      "server": "27.50.48.230",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 89",
+      "type": "vless",
+      "server": "27.50.48.36",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 90",
+      "type": "vless",
+      "server": "27.50.49.39",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 91",
+      "type": "vless",
+      "server": "27.50.48.199",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 92",
+      "type": "vless",
+      "server": "104.29.67.14",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 93",
+      "type": "vless",
+      "server": "103.160.204.250",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 94",
+      "type": "vless",
+      "server": "27.50.48.126",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 95",
+      "type": "vless",
+      "server": "27.50.48.90",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 96",
+      "type": "vless",
+      "server": "27.50.49.41",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 97",
+      "type": "vless",
+      "server": "27.50.49.213",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 98",
+      "type": "vless",
+      "server": "27.50.49.221",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 99",
+      "type": "vless",
+      "server": "27.50.49.2",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    },
+    {
+      "tag": "Argo 100",
+      "type": "vless",
+      "server": "104.29.69.55",
+      "server_port": 443,
+      "uuid": "a4e292a5-8241-40dd-8dc5-e493e4fb5251",
+      "packet_encoding": "xudp",
+      "tls": {
+        "enabled": true,
+        "insecure": true,
+        "server_name": "argo.crystalball.pp.ua"
+      },
+      "transport": {
+        "type": "ws",
+        "path": "/",
+        "headers": {
+          "Host": "argo.crystalball.pp.ua"
+        }
+      }
+    }
+  ],
+  "route": {
+    "auto_detect_interface": true,
+    "final": "proxy",
+    "rules": [
+      {
+        "protocol": "dns",
+        "outbound": "dns-out"
+      },
+      {
+        "port": 53,
+        "outbound": "dns-out"
+      },
+      {
+        "network": "udp",
+        "port": 443,
+        "outbound": "block"
+      },
+      {
+        "rule_set": "geosite-category-ads-all",
+        "outbound": "AdBlock"
+      },
+      {
+        "clash_mode": "direct",
+        "outbound": "direct"
+      },
+      {
+        "clash_mode": "global",
+        "outbound": "proxy"
+      },
+      {
+        "domain": [
+          "clash.razord.top",
+          "yacd.metacubex.one",
+          "yacd.haishan.me",
+          "d.metacubex.one"
+        ],
+        "outbound": "direct"
+      },
+      {
+        "rule_set": "geosite-openai",
+        "outbound": "OpenAI"
+      },
+      {
+        "rule_set": "geosite-youtube",
+        "outbound": "Google"
+      },
+      {
+        "rule_set": "geoip-google",
+        "outbound": "Google"
+      },
+      {
+        "rule_set": "geosite-google",
+        "outbound": "Google"
+      },
+      {
+        "rule_set": "geosite-github",
+        "outbound": "Google"
+      },
+      {
+        "rule_set": "geoip-telegram",
+        "outbound": "Telegram"
+      },
+      {
+        "rule_set": "geosite-telegram",
+        "outbound": "Telegram"
+      },
+      {
+        "rule_set": "geoip-twitter",
+        "outbound": "Twitter"
+      },
+      {
+        "rule_set": "geosite-twitter",
+        "outbound": "Twitter"
+      },
+      {
+        "rule_set": "geoip-facebook",
+        "outbound": "Facebook"
+      },
+      {
+        "rule_set": [
+          "geosite-facebook",
+          "geosite-instagram"
+        ],
+        "outbound": "Facebook"
+      },
+      {
+        "rule_set": "geoip-bilibili",
+        "outbound": "BiliBili"
+      },
+      {
+        "rule_set": "geosite-bilibili",
+        "outbound": "BiliBili"
+      },
+      {
+        "rule_set": "geosite-bahamut",
+        "outbound": "Bahamut"
+      },
+      {
+        "rule_set": "geosite-spotify",
+        "outbound": "Spotify"
+      },
+      {
+        "rule_set": "geosite-tiktok",
+        "outbound": "TikTok"
+      },
+      {
+        "rule_set": "geoip-netflix",
+        "outbound": "NETFLIX"
+      },
+      {
+        "rule_set": "geosite-netflix",
+        "outbound": "NETFLIX"
+      },
+      {
+        "rule_set": "geosite-disney",
+        "outbound": "Disney+"
+      },
+      {
+        "rule_set": "geosite-apple",
+        "outbound": "Apple"
+      },
+      {
+        "rule_set": "geosite-amazon",
+        "outbound": "Apple"
+      },
+      {
+        "rule_set": "geosite-microsoft",
+        "outbound": "Microsoft"
+      },
+      {
+        "rule_set": "geosite-category-games",
+        "outbound": "Games"
+      },
+      {
+        "rule_set": "geosite-hbo",
+        "outbound": "Streaming"
+      },
+      {
+        "rule_set": "geosite-primevideo",
+        "outbound": "Streaming"
+      },
+      {
+        "rule_set": "geosite-geolocation-!cn",
+        "outbound": "Global"
+      },
+      {
+        "rule_set": "geosite-private",
+        "outbound": "direct"
+      },
+      {
+        "ip_is_private": true,
+        "outbound": "direct"
+      },
+      {
+        "rule_set": "geoip-cn",
+        "outbound": "China"
+      },
+      {
+        "rule_set": "geosite-cn",
+        "outbound": "China"
+      }
+    ],
+    "rule_set": [
+      {
+        "tag": "geoip-google",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/google.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geoip-telegram",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/telegram.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geoip-twitter",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/twitter.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geoip-facebook",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/facebook.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geoip-netflix",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/netflix.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geoip-apple",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo-lite/geoip/apple.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geoip-bilibili",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo-lite/geoip/bilibili.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geoip-cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-private",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/private.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-openai",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/openai.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-youtube",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/youtube.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-google",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/google.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-github",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/github.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-telegram",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/telegram.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-twitter",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/twitter.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-facebook",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/facebook.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-instagram",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/instagram.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-bilibili",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/bilibili.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-bahamut",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/bahamut.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-spotify",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/spotify.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-tiktok",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/tiktok.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-netflix",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/netflix.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-disney",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/disney.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-apple",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/apple.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-amazon",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/amazon.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-microsoft",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/microsoft.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-category-games",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-games.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-hbo",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/hbo.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-primevideo",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/primevideo.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cn.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-geolocation-!cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs",
+        "download_detour": "direct"
+      },
+      {
+        "tag": "geosite-category-ads-all",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ads-all.srs",
+        "download_detour": "direct"
+      }
+    ]
+  }
+}
